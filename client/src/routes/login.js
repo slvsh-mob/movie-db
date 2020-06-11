@@ -18,13 +18,14 @@ const LoginPage = () => {
     const handleSubmit = e => {
         axios({
             method: 'Post',
-            url: '/user/login',
+            url: 'http://localhost:5000/user/login',
             data: {
                 email: email,
                 password: password
             }
         })
         .then(response => {
+            console.log(response)
             if(response.data.message === "Authorization Successful"){
                 //Save token to local storage for authentication
                 localStorage.setItem('token', response.data.token)
