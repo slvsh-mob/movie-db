@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv/config')
-const morgan = require('morgan')
 //Handling Filepaths
 const path = require('path')
 
@@ -29,7 +28,6 @@ if (process.env.NODE_ENV === 'production'){
 
 //Set Upload folder and specify middleware
 app.use('/uploads', express.static('uploads'));
-app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
