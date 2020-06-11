@@ -60,6 +60,7 @@ router.post('/signup', (req, res, next) => {
 //Login Existing User -> Check existing user credentials and return JWT
 //JWT will be used for making authorized requests to the API endpoints, this functionality is not implemented yet
 router.post('/login', (req, res, next) => {
+    console.log(req.body.email)
     User.find({ email: req.body.email })
     .exec()
     .then(user => {
@@ -75,6 +76,8 @@ router.post('/login', (req, res, next) => {
                 });
             }
             if (result) {
+                console.log(user[0].email)
+                console.log(user[0]._id)
                 const token = jwt.sign({
                     email: user[0].email,
                     userId: user[0]._id

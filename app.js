@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv/config')
+const morgan = require('morgan')
 //Handling Filepaths
 const path = require('path')
 
@@ -12,8 +13,8 @@ const userRoutes = require('./routes/user');
 const movieRoutes = require('./routes/movies');
 const commentRoutes = require('./routes/comments')
 
-//Intantiate Database Connectino
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => 
+//Instantiate Database Connectino
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => 
     console.log('connected to DB')
 )
 
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV === 'production'){
 
 //Set Upload folder and specify middleware
 app.use('/uploads', express.static('uploads'));
+app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 

@@ -5,15 +5,17 @@ import UserProfile from '../components/userpage/userProfile'
 import SearchBar from '../components/searchbar/searchbar'
 
 //Logout function --> Clear local storage and redirect user to login page
-const handleLogout = (e) => {
-    localStorage.clear()
-    setTimeout(() => {  window.location = "/login"; }, 1000);
-}
+
 
 const UserPage = () => {
     const [searching, setSearching] = React.useState(false)
     const [searchTerm, setSearchTerm] = React.useState('')
 
+    const handleLogout = () => {
+        localStorage.clear();
+        window.location = "/login"
+    }
+    
     const handleSearching = (e) => {
         setSearching(!searching)
     }
@@ -21,6 +23,7 @@ const UserPage = () => {
     const handleSearchTerm = (e) => {
         setSearchTerm(e.target.value)
     }
+
 
     return(
         <div className="single_page_background">
@@ -34,7 +37,7 @@ const UserPage = () => {
                 : <React.Fragment>
                     <Navbar handleSearching={handleSearching} searching={searching} handleSearchTerm={handleSearchTerm} searchTerm={searchTerm}/>
                     <Sidebar searching={searching} blank="false"/>
-                    <UserProfile searching={searching} />
+                    <UserProfile searching={searching} handleLogout={handleLogout}/>
                   </React.Fragment>
                 
             }

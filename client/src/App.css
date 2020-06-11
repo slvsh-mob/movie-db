@@ -232,18 +232,22 @@ input[type="file"] + label {
 }
 
 .main_page_div{
-  width: 85%;
+  width: 80%;
   height: 100%;
   float: right;
   padding: 25px;
+  position: absolute;
+  left: 20%;
+  top: 75px;
 }
 
 .main_page_div_search{
-  width: 85%;
+  width: 80%;
   height: 100%;
   float: right;
   padding: 25px;
-  margin-top: 200px;
+  left: 20%;
+  top: 275px;
 }
 
 .first_page{

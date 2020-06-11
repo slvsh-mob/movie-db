@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import homepage from './routes/homepage'
 import login from './routes/login'
 import createMovie from './routes/createMovie'
@@ -11,7 +11,7 @@ import singleviewPage from './routes/singleView'
 import userPage from './routes/userPage'
 
 function App() {
-  
+
   return (
     <Router>
     <div className="App">
@@ -23,6 +23,9 @@ function App() {
       <Route path="/listview" component={listviewPage}></Route>
       <Route path="/singleview/:movieId" component={singleviewPage}></Route>
       <Route path="/user" component={userPage}></Route>
+      <Route exact path="/" render={() => (
+        <Redirect to="/login"/>
+      )}/>
     </div>
     </Router>
   );
