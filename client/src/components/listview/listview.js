@@ -6,7 +6,7 @@ const ListView = (props) => {
     return(
         props.inlet.map((index, value) => {
             return(
-                <ListElement input={index}/>
+                <ListElement input={index} key={index._id}/>
             )
         })
     )

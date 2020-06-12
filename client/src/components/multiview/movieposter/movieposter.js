@@ -14,18 +14,20 @@ const MoviePoster = (props) => {
          onClick={handleClick}
          >
             {isBlurred ? (
-                <Fragment>
+                <div style={box}>
                     <img 
-                    src={props.poster_picture} 
+                    src={props.poster} 
                     style={photo_style}
                     className="blurred_poster"
                     alt="Movie Poster"
                     />
+                    <div style={text_effect}>
                     <p style={text_test}>{props.title}</p>
-                </Fragment>
+                    </div>
+                </div>
             ): (
                 <img 
-                src={props.poster_picture} 
+                src={props.poster} 
                 style={photo_style}
                 className="unblurred_poster"
                 alt="Movie Poster"
@@ -35,12 +37,22 @@ const MoviePoster = (props) => {
     );
 }
 
-const text_test = {
+const text_effect = {
+    width: "100%",
+    height: "200px",
     position: "relative",
-    top: "-60%",
+    top: "-150px"
+}
+
+const box = {
+    position: "relative",
+    height: "100%",
+    width: "100%"
+}
+
+const text_test = {
     fontSize: "20px",
     textAlign: "center",
-    maxWidth: "225px",
     color: "white"
 }
 

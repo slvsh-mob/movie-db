@@ -93,14 +93,24 @@ html{
   flex-direction: column;
 }
 
-.multiview_style{
+.multiview_div{
   width: 80%;
   height: 100%;
   background-color: #393E46;
   position: absolute;
   z-index: 1;
   left: 20%;
-  top: 14vh;
+  top: 75px;
+}
+
+.multiview_div_search{
+  width: 80%;
+  height: 100%;
+  background-color: #393E46;
+  position: absolute;
+  z-index: 1;
+  left: 20%;
+  top: 275px;
 }
 
 .multiview_top_buffer{
