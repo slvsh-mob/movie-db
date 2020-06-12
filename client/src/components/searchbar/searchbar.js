@@ -18,45 +18,45 @@ const SearchBar = (props) => {
                     </div>
                     : <React.Fragment>
                         {props.data.length === 1 &&
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[0]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[0]._id}}>
                                 <img src={props.data[0].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
                         }
                         {props.data.length === 2 &&
                         <React.Fragment>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[0]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[0]._id}}>
                                 <img src={props.data[0].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[1]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[1]._id}}>
                                 <img src={props.data[1].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
                         </React.Fragment>
                         }
                         {props.data.length === 3 &&
                         <React.Fragment>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[0]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[0]._id}}>
                                 <img src={props.data[0].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[1]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[1]._id}}>
                                 <img src={props.data[1].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[2]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[2]._id}}>
                                 <img src={props.data[2].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
                         </React.Fragment>
                         }
                         {props.data.length === 4 &&
                         <React.Fragment>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[0]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[0]._id}}>
                                 <img src={props.data[0].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[1]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[1]._id}}>
                                 <img src={props.data[1].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[2]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[2]._id}}>
                                 <img src={props.data[2].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[3]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[3]._id}}>
                                 <img src={props.data[3].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
                         </React.Fragment>
@@ -66,19 +66,19 @@ const SearchBar = (props) => {
                             <div style={button_section_pag}>
                             <GrPrevious style={pag_button}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[0]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[0]._id}}>
                                 <img src={props.data[0].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[1]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[1]._id}}>
                                 <img src={props.data[1].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[2]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[2]._id}}>
                                 <img src={props.data[2].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[3]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[3]._id}}>
                                 <img src={props.data[3].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
-                            <div style={results_element} onClick={() => {window.location = "http://localhost:3000/singleview/" + props.data[4]._id}}>
+                            <div style={results_element} onClick={() => {window.location = "/singleview/" + props.data[4]._id}}>
                                 <img src={props.data[4].Poster} alt="Poster Missing" style={poster_style}/>
                             </div>
                             <div style={button_section_pag}>
