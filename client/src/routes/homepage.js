@@ -49,11 +49,11 @@ const HomePage = () => {
                 ? <React.Fragment>
                     <Navbar handleSubmit={handleSubmit} handleSearching={handleSearching} searching={searching} handleSearchTerm={handleSearchTerm} searchTerm={searchTerm}/>
                     <SearchBar loading={loading} handleSearching={handleSearching} searchTerm={searchTerm} data={data}/>
-                    <Sidebar searching={searching} blank="false"/>
+                    <Sidebar searching={searching} />
                   </React.Fragment>
                 : <React.Fragment>
                     <Navbar handleSubmit={handleSubmit} handleSearching={handleSearching} searching={searching} handleSearchTerm={handleSearchTerm} searchTerm={searchTerm}/>
-                    <Sidebar searching={searching} blank="false"/>
+                    <Sidebar searching={searching} />
                   </React.Fragment>
             }
         </div>
