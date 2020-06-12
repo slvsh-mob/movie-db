@@ -11,7 +11,7 @@ const ListViewPage = () => {
 
     const [data, setData] = React.useState(loading)
 
-    useEffect(() => {
+     useEffect(() => {
         const fetchData = async () => {
             const result = await axios("/api/movies/")
             const path = result.data
@@ -19,7 +19,7 @@ const ListViewPage = () => {
             console.log(path)
         }
         fetchData();
-    }, []);
+    }, []); 
 
     return(
         <div className="first_page">
@@ -27,7 +27,7 @@ const ListViewPage = () => {
             <div style={row2}>
                 <Sidebar />
                 <div style={test2}>
-                    <Listview input={data}/>
+                    <Listview inlet={data}/>
                 </div>
             </div>
         </div>
