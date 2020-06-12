@@ -7,10 +7,10 @@ const dotenv = require('dotenv/config')
 const path = require('path')
 
 //Import Routes and Components
-const directorRoutes = require('./api/routes/directors');
-const userRoutes = require('./api/routes/user');
-const movieRoutes = require('./api/routes/movies');
-const commentRoutes = require('./api/routes/comments')
+const directorRoutes = require('./routes/directors');
+const userRoutes = require('./routes/user');
+const movieRoutes = require('./routes/movies');
+const commentRoutes = require('./routes/comments')
 
 //Instantiate Database Connectino
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => 
