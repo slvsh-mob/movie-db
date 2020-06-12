@@ -23,7 +23,7 @@ const CreateMovie = () => {
         setLoading(true)
         setSearching(!searching)
         e.preventDefault()
-        var temp_term = "http://localhost:5000/movies/title/" + searchTerm
+        var temp_term = "/api/movies/title/" + searchTerm
         axios({
             method: "Get",
             url: temp_term

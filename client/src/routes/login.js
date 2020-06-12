@@ -18,7 +18,7 @@ const LoginPage = () => {
     const handleSubmit = e => {
         axios({
             method: 'Post',
-            url: '/user/login',
+            url: '/api/user/login',
             data: {
                 email: email,
                 password: password

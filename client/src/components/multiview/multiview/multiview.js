@@ -64,7 +64,7 @@ const MultiView = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios("/movies/")
+            const result = await axios("/api/movies/")
             const items = result.data.length;
             setNumChunks(items / 5)
             setRemainder(items % 5)

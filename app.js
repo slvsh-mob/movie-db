@@ -46,10 +46,10 @@ app.use((req, res, next) => {
 })
 
 //Define Routes (endpoints) for API
-app.use('/directors', directorRoutes)
-app.use('/user', userRoutes)
-app.use('/movies', movieRoutes)
-app.use('/comments', commentRoutes)
+app.use('/api/directors', directorRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/movies', movieRoutes)
+app.use('/api/comments', commentRoutes)
 
 //Create General 404 Error
 app.use((req, res, next) => {
