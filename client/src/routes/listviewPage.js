@@ -13,7 +13,7 @@ const ListViewPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios("/movies/")
+            const result = await axios("/api/movies/")
             const path = result.data
             setData(path)
             console.log(path)

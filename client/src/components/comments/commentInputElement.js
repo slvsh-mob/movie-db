@@ -25,7 +25,7 @@ const CommentElement = (props) => {
     const handleSubmit = (e) => {
         axios({
             method: "Post",
-            url: "/comments/",
+            url: "/api/comments/",
             data: {
                 userId: userId,
                 movieId: movieId,

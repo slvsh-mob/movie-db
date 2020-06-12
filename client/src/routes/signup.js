@@ -48,7 +48,7 @@ const LoginPage = () => {
         if (check1){
             axios({
                 method: 'Post',
-                url: '/user/signup',
+                url: '/api/user/signup',
                 data: {
                     email: email,
                     username: username,

@@ -17,7 +17,7 @@ const SingleViewPage = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const temp_string = "/movies/id/" + id
+            const temp_string = "/api/movies/id/" + id
             const result = await axios(temp_string)
             const path = result.data
             setId(path._id)

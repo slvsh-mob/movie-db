@@ -11,7 +11,7 @@ const CommentElement = (props) => {
 
 
     useEffect(() => {
-        const endpoint = "/comments/movie/" + movieId
+        const endpoint = "/api/comments/movie/" + movieId
         const fetchData = async () => {
             const result = await axios(endpoint)
             const path = result.data
