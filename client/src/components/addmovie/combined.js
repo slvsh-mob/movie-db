@@ -62,7 +62,7 @@ const AddMovieInput = (props) => {
 
         axios({
             method: "Post",
-            url: "http://localhost:5000/movies/",
+            url: "/movies/",
             data: formData
         })
         .then(response => {

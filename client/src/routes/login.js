@@ -18,7 +18,7 @@ const LoginPage = () => {
     const handleSubmit = e => {
         axios({
             method: 'Post',
-            url: 'http://localhost:5000/user/login',
+            url: '/user/login',
             data: {
                 email: email,
                 password: password
