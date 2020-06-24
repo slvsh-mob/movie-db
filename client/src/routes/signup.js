@@ -2,6 +2,20 @@ import React from 'react'
 import axios from 'axios'
 import swal from 'sweetalert'
 
+//Photos
+import low from '../static_images/low.jpg'
+import tron from '../static_images/tron.jpg'
+import fal from '../static_images/fal.jpg'
+import pf from '../static_images/pf.jpg'
+import dk from '../static_images/dk.jpg'
+import sf from '../static_images/sf.jpg'
+import fc from '../static_images/fc.jpg'
+import esb from '../static_images/esb.jpg'
+import joker from '../static_images/joker.jpg'
+import avatar from '../static_images/avatar.jpg'
+import terminator from '../static_images/terminator.jpg'
+import vertigo from '../static_images/vertigo.jpg'
+
 const LoginPage = () => {
     const [username, setUsername] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -85,7 +99,24 @@ const LoginPage = () => {
         <div className="single_page_background">
             <div style={login_div}>
                 <div style={left_div}>
-
+                <div style={row_1}>
+                        <div style={row_element}><img src={low} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={dk} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={fal} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={pf} alt="poster missing" style={photo_style}/></div>
+                    </div>
+                    <div style={row_1}>
+                        <div style={row_element}><img src={fc} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={sf} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={esb} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={joker} alt="poster missing" style={photo_style}/></div>
+                    </div>
+                    <div style={row_1}>
+                    <div style={row_element}><img src={avatar} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={terminator} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={vertigo} alt="poster missing" style={photo_style}/></div>
+                        <div style={row_element}><img src={tron} alt="poster missing" style={photo_style}/></div>
+                    </div>
                 </div>
                 <div style={right_div}>
                     <div style={title_row}>
@@ -125,6 +156,20 @@ const LoginPage = () => {
     );
 }
 
+const row_element = {
+    width: "25%",
+    height: "100%",
+    backgroundColor: "#2C3E50",
+    border: "1px solid black"
+}
+
+const row_1 = {
+    height: "250px",
+    backgroundColor: "black",
+    display: "flex",
+    flexDirection: "row"
+}
+
 const input_row = {
     flexGrow: "5",
     width: "100%",
@@ -143,9 +188,9 @@ const lower_unit = {
 }
 
 const submit_btn = {
-    flexGrow: "1",
+    backgroundColor: "#008ECC",
+    flexGrow: 1,
     maxWidth: "300px",
-    backgroundColor: "#27AE60",
     fontSize: "20pt",
     borderRadius: "5px"
 }
@@ -156,7 +201,7 @@ const small_buffer = {
 
 const login_div = {
     width: "80%",
-    height: "80%",
+    height: "750px",
     backgroundColor: "#EEEEEE",
     position: "fixed",
     zIndex: "2",
@@ -167,20 +212,28 @@ const login_div = {
 }
 
 const left_div = {
-    flexGrow: "1",
+    width: "650px",
     height: "100%",
-    backgroundColor: "#D65A31"
+    backgroundColor: "#D65A31",
+    display: "flex",
+    flexDirection: "column",
+    boxShadow: "1px 1px 5px gray"
 }
 
 const right_div = {
     minWidth: "470px",
-    maxWidth: "700px",
+    maxWidth: "900px",
     flexGrow: "1",
     height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
+}
+
+const photo_style = {
+    height: "100%",
+    width: "100%"
 }
 
 const login_input = {
@@ -208,11 +261,10 @@ const title_row = {
 }
 
 const login_title = {
+    flexGrow: "1",
     fontSize: "6vh",
-    fontWeight: "bold",
-    width: "80%",
-    marginLeft: "10%",
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: "Krona One"
 }
 
 const middle_row = {
