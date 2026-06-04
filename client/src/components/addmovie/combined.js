@@ -63,6 +63,9 @@ const AddMovieInput = (props) => {
         axios({
             method: "Post",
             url: "/api/movies/",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            },
             data: formData
         })
         .then(response => {
