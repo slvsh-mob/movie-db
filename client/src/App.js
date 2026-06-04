@@ -9,6 +9,7 @@ import listviewPage from './routes/listviewPage'
 import signup from './routes/signup'
 import singleviewPage from './routes/singleView'
 import userPage from './routes/userPage'
+import ProtectedRoute from './components/protectedRoutes/protectedRoutes'
 
 function App() {
 
@@ -18,11 +19,11 @@ function App() {
       <Route path="/homepage" component={homepage}></Route>
       <Route path="/login" component={login}></Route>
       <Route path="/signup" component={signup}></Route>
-      <Route path="/createMovie" component={createMovie}></Route>
+      <ProtectedRoute path="/createMovie" component={createMovie}></ProtectedRoute>
       <Route path="/multiview" component={multiviewPage}></Route>
       <Route path="/listview" component={listviewPage}></Route>
       <Route path="/singleview/:movieId" component={singleviewPage}></Route>
-      <Route path="/user" component={userPage}></Route>
+      <ProtectedRoute path="/user" component={userPage}></ProtectedRoute>
       <Route exact path="/" render={() => (
         <Redirect to="/login"/>
       )}/>

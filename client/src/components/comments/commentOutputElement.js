@@ -1,77 +1,64 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 
-const CommentElement = (props) => {
-    const [movieId, setMovieId] = React.useState(props.movieId)
-    const [userId, setUserId] = React.useState(localStorage.getItem('userId'))
-    const [userRating, setUserRating] = React.useState('')
-    const [userComment, setUserComment] = React.useState('')
-    const [commentDate, setCommentDate] = React.useState('')
-    const [noData, setNoData] = React.useState(true)
+//Renders the full list of comments for a movie (passed in from SingleViewPage)
+const CommentList = (props) => {
+    const comments = props.comments || []
 
-
-    useEffect(() => {
-        const endpoint = "/api/comments/movie/" + movieId
-        const fetchData = async () => {
-            const result = await axios(endpoint)
-            const path = result.data
-            //Check if more than 1 comment exists
-            if(path.length > 0){
-                setUserRating(result.data[0].rating)
-                setUserComment(result.data[0].comment)
-                setCommentDate(result.data[0].date)
-                setNoData(false)
-            }
-        }
-        fetchData();
-    }, [movieId]);
-
-    return(
-    <div style={comment_div}>
-        {noData
-            ? <React.Fragment>
+    if (comments.length === 0) {
+        return (
+            <div style={comment_div}>
                 <div style={no_comments_div}>
                     <p style={no_comments_text}>--- No Comments Found ---</p>
                 </div>
-              </React.Fragment>
-            : <React.Fragment>
-                <div style={double_stack}>
-                    <div style={rating_section_2}>
+            </div>
+        );
+    }
+
+    return (
+        <React.Fragment>
+            {comments.map(comment => (
+                <div style={comment_div} key={comment._id}>
+                    <div style={double_stack}>
+                        <div style={rating_section_2}>
+                            <div style={heading_section}>
+                                <p style={rating_text}>User</p>
+                            </div>
+                            <div style={output_section}>
+                                <p style={rating_text}>
+                                    {comment.userID && comment.userID.username
+                                        ? comment.userID.username
+                                        : 'Anonymous'}
+                                </p>
+                            </div>
+                        </div>
+                        <div style={rating_section_2}>
+                            <div style={heading_section}>
+                                <p style={rating_text}>Date</p>
+                            </div>
+                            <div style={output_section}>
+                                <p style={rating_text}>{new Date(comment.date).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style={rating_section}>
                         <div style={heading_section}>
-                            <p style={rating_text}>User</p>
+                            <p style={rating_text}>Rating</p>
                         </div>
-                        <div style={output_section}>
-                            <p style={rating_text}>{userId}</p>
+                        <div style={output_section_2}>
+                            <p style={rating_text}>{comment.rating} / 10</p>
                         </div>
                     </div>
-                    <div style={rating_section_2}>
+                    <div style={comment_section}>
                         <div style={heading_section}>
-                            <p style={rating_text}>Date</p>
+                            <p style={rating_text}>Comment</p>
                         </div>
-                        <div style={output_section}>
-                            <p style={rating_text}>{commentDate}</p>
+                        <div style={output_section_2}>
+                            <p style={rating_text}>{comment.comment}</p>
                         </div>
                     </div>
                 </div>
-                <div style={rating_section}>
-                    <div style={heading_section}>
-                        <p style={rating_text}>Rating</p>
-                    </div>
-                    <div style={output_section_2}>
-                        <p style={rating_text}>{userRating}</p>
-                    </div>
-                </div>
-                <div style={comment_section}>
-                    <div style={heading_section}>
-                        <p style={rating_text}>Comment</p>
-                    </div>
-                    <div style={output_section_2}>
-                        <p style={rating_text}>{userComment}</p>
-                    </div>
-                </div>
-              </React.Fragment>
-        }
-    </div>
+            ))}
+        </React.Fragment>
     );
 }
 
@@ -140,7 +127,7 @@ const comment_section = {
     alignItems: "center"
 }
 const comment_div = {
-    height: "125px",
+    minHeight: "125px",
     width: "100%",
     backgroundColor: "#EEEEEE",
     marginTop: "20px",
@@ -149,4 +136,4 @@ const comment_div = {
     flexDirection: "row",
     alignItems: "center"
 }
-export default CommentElement
+export default CommentList

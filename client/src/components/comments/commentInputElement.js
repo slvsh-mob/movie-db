@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import axios from 'axios'
 import swal from 'sweetalert'
 
 const CommentElement = (props) => {
-    const [movieId, setMovieId] = React.useState('')
-    const [userId, setUserId] = React.useState('')
     const [userRating, setUserRating] = React.useState('')
     const [userComment, setUserComment] = React.useState('')
 
@@ -16,20 +14,45 @@ const CommentElement = (props) => {
         setUserComment(e.target.value)
     }
 
-    useEffect(() => {
-        // Set the movie ID and user ID for comment creation
-        setMovieId(props.movieId)
-        setUserId(localStorage.getItem('userId'))
-    }, [movieId]);
-
     const handleSubmit = (e) => {
+        const token = localStorage.getItem('token')
+        if (!token) {
+            swal({
+                "title": "Please Log In",
+                "text": "You need to be logged in to leave a comment.",
+                "icon": "warning"
+            })
+            return
+        }
+
+        const rating = Number(userRating)
+        if (!Number.isFinite(rating) || rating < 1 || rating > 10) {
+            swal({
+                "title": "Invalid Rating",
+                "text": "Please enter a rating between 1 and 10.",
+                "icon": "warning"
+            })
+            return
+        }
+
+        if (userComment.trim() === '') {
+            swal({
+                "title": "Empty Comment",
+                "text": "Please write a comment before submitting.",
+                "icon": "warning"
+            })
+            return
+        }
+
         axios({
             method: "Post",
             url: "/api/comments/",
+            headers: {
+                Authorization: "Bearer " + token
+            },
             data: {
-                userId: userId,
-                movieId: movieId,
-                rating: userRating,
+                movieId: props.movieId,
+                rating: rating,
                 comment: userComment
             }
         })
@@ -42,13 +65,17 @@ const CommentElement = (props) => {
                 })
                 setUserComment('')
                 setUserRating('')
+                //Tell the parent page to refresh the comment list & average rating
+                if (props.onCommentAdded) {
+                    props.onCommentAdded()
+                }
             }
-            console.log(response)
         })
         .catch(error => {
+            const loggedOut = error.response && error.response.status === 401
             swal({
-                "title": "Something Went Wrong!",
-                "text": "Please Try Again",
+                "title": loggedOut ? "Session Expired" : "Something Went Wrong!",
+                "text": loggedOut ? "Please log in again to comment." : "Please Try Again",
                 "icon": "error"
             })
             console.log(error)
@@ -59,10 +86,10 @@ const CommentElement = (props) => {
     <div style={comment_div}>
         <div style={rating_section}>
             <div style={heading_section}>
-                <p style={rating_text}>Rating</p>
+                <p style={rating_text}>Rating (1-10)</p>
             </div>
             <div style={num_in_section}>
-                <input type="number" style={num_input_style} value={userRating} onChange={handleRating}/>
+                <input type="number" min="1" max="10" step="1" style={num_input_style} value={userRating} onChange={handleRating}/>
             </div>
         </div>
         <div style={comment_section}>

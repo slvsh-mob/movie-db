@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import axios from 'axios'
 import CommentInElement from '../comments/commentInputElement'
@@ -14,11 +14,22 @@ const SingleViewPage = (props) => {
     const [rating, setRating] = React.useState('')
     const [director, setDirector] = React.useState('')
     const [genre, setGenre] = React.useState('')
+    const [comments, setComments] = React.useState([])
+
+    //Fetch all comments for this movie - reused after a new comment is posted
+    const fetchComments = useCallback(async () => {
+        if (!id) return;
+        try {
+            const result = await axios("/api/comments/movie/" + id)
+            setComments(result.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }, [id]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const temp_string = "/api/movies/id/" + id
-            const result = await axios(temp_string)
+            const result = await axios("/api/movies/id/" + id)
             const path = result.data
             setId(path._id)
             setTitle(path.Title)
@@ -31,8 +42,14 @@ const SingleViewPage = (props) => {
             setGenre(path.Genre)
         }
         fetchData();
-    }, [id]);
+        fetchComments();
+    }, [id, fetchComments]);
 
+    //Average user rating computed from comments (1 decimal place)
+    const ratedComments = comments.filter(c => typeof c.rating === 'number')
+    const averageRating = ratedComments.length > 0
+        ? (ratedComments.reduce((sum, c) => sum + c.rating, 0) / ratedComments.length).toFixed(1)
+        : null
 
     return(
         <div className="singleview_style">
@@ -48,7 +65,7 @@ const SingleViewPage = (props) => {
                             </div>
                             <div style={rating_div}>
                                 <AiFillStar  style={star_style}/>
-                                <p style={single_text}>8.4</p>
+                                <p style={single_text}>{averageRating !== null ? averageRating : 'N/A'}</p>
                             </div>
                         </div>
                             <div style={row}>
@@ -87,8 +104,8 @@ const SingleViewPage = (props) => {
                         </div>
                     </div>
             </div>
-            <CommentInElement movieId={id} />
-            <CommentOutElement movieId={id} />
+            <CommentInElement movieId={id} onCommentAdded={fetchComments} />
+            <CommentOutElement comments={comments} />
 
         </div>
     );
